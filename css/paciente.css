@@ -1,0 +1,43 @@
+tr#header>th{
+    background-color: #00629B;
+    color: #FFFFFF;
+}
+
+header{
+    background-color: #00629B;
+    width: 100%;
+    height: 110px;
+}
+
+div.row>div.col-2>button#enviar.btn{
+    background-color: #00629B;
+    color: #FFFFFF;
+    transition: background-color 1s;
+}
+
+div.row>div.col-2>button#enviar.btn:hover{
+    background-color: #031e2e80;
+    transition: background-color 2s;
+    color: #FFFFFF;
+}
+
+a.page-link{
+    color: #00629B;
+}
+
+li.active>a.page-link{
+    background-color: #00629B;
+    border: none;
+}
+
+tr>td>a.btn{
+    background-color: rgb(245,130,4);
+    transition: background-color 0.5s;
+    color: #FFFFFF;
+}
+
+tr>td>a.btn:hover{
+    background-color: rgb(185, 96, 0);
+    transition: background-color 1s;
+    color: #FFFFFF;
+}

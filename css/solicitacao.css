@@ -1,0 +1,31 @@
+header{
+    background-color: #00629B;
+    width: 100%;
+    height: 110px;
+}
+
+div.row.text-center{
+    background-color: rgb(251,214,176);
+    border-radius: 12px;
+    margin-top: 2%;
+    margin-left: 0.05%;
+    margin-right: 0.05%;
+    margin-bottom: 2%;
+}
+
+div.row.text-center>p{
+    margin: 1%;
+}
+
+div.d-flex.justify-content-end>button#enviar.btn{
+    margin-top: 1%;
+    background-color: #00629B;
+    color: #FFFFFF;
+    transition: background-color 1s;
+}
+
+div.d-flex.justify-content-end>button#enviar.btn:hover{
+    background-color: #031e2e80;
+    transition: background-color 2s;
+    color: #FFFFFF;
+}
