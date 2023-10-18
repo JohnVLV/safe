@@ -1,4 +1,5 @@
 <?php
+    //recepção das variáveis para cadastro e a inserção em si
     include '../database.php';
     if (isset($_POST['procedimento']) && $_POST['procedimento']!="0") {
         $id_paciente = $_POST['id-paciente'];
@@ -18,7 +19,7 @@
         echo'ERROR';
     }
 ?>
-
+<!--exibição do envio-->
 <!DOCTYPE html>
     <html lang="pt-br">
     <head>
@@ -37,7 +38,7 @@
     <body>
         <div class="container">
             <h1>Consulta cadastrada com sucesso!</h1>
-            <td><a class='btn' href='../index.php' role='button'>Retornar à lista de pacientes!</a></td>
+            <a class='btn' href='../index.php' role='button'>Retornar à lista de pacientes!</a>
         </div>
     </body>
 

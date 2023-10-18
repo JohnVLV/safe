@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18/10/2023 às 07:43
+-- Tempo de geração: 18/10/2023 às 09:25
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -147,7 +147,8 @@ CREATE TABLE `solicitacao` (
 
 INSERT INTO `solicitacao` (`id`, `id_paciente`, `id_profissional`, `id_procedimento`, `data`, `hora`) VALUES
 (157, 2, 1, 3, '2023-10-18', '02:37:00'),
-(158, 2, 1, 4, '2023-10-18', '02:37:00');
+(158, 2, 1, 4, '2023-10-18', '02:37:00'),
+(159, 1, 2, 2, '2023-10-18', '03:25:00');
 
 -- --------------------------------------------------------
 
@@ -204,7 +205,10 @@ ALTER TABLE `profissionalatende`
 -- Índices de tabela `solicitacao`
 --
 ALTER TABLE `solicitacao`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_paciente` (`id_paciente`,`id_profissional`,`id_procedimento`),
+  ADD KEY `id_profissional` (`id_profissional`),
+  ADD KEY `id_procedimento` (`id_procedimento`);
 
 --
 -- Índices de tabela `tiposolicitacao`
@@ -244,7 +248,7 @@ ALTER TABLE `profissionalatende`
 -- AUTO_INCREMENT de tabela `solicitacao`
 --
 ALTER TABLE `solicitacao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT de tabela `tiposolicitacao`
@@ -260,7 +264,8 @@ ALTER TABLE `tiposolicitacao`
 -- Restrições para tabelas `procedimentos`
 --
 ALTER TABLE `procedimentos`
-  ADD CONSTRAINT `procedimentos_ibfk_1` FOREIGN KEY (`tipo_id`) REFERENCES `tiposolicitacao` (`id`);
+  ADD CONSTRAINT `procedimentos_ibfk_1` FOREIGN KEY (`tipo_id`) REFERENCES `tiposolicitacao` (`id`),
+  ADD CONSTRAINT `procedimentos_ibfk_2` FOREIGN KEY (`id`) REFERENCES `profissionalatende` (`procedimento_id`);
 
 --
 -- Restrições para tabelas `profissionalatende`
@@ -268,6 +273,14 @@ ALTER TABLE `procedimentos`
 ALTER TABLE `profissionalatende`
   ADD CONSTRAINT `profissionalatende_ibfk_1` FOREIGN KEY (`procedimento_id`) REFERENCES `procedimentos` (`id`),
   ADD CONSTRAINT `profissionalatende_ibfk_2` FOREIGN KEY (`profissional_id`) REFERENCES `profissional` (`id`);
+
+--
+-- Restrições para tabelas `solicitacao`
+--
+ALTER TABLE `solicitacao`
+  ADD CONSTRAINT `solicitacao_ibfk_1` FOREIGN KEY (`id_profissional`) REFERENCES `profissional` (`id`),
+  ADD CONSTRAINT `solicitacao_ibfk_2` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id`),
+  ADD CONSTRAINT `solicitacao_ibfk_3` FOREIGN KEY (`id_procedimento`) REFERENCES `procedimentos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
